@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+    <!--TODO: improve styling with completion of other tasks-->
+
+    <!--top/logo-->
+    <div class="container" style="text-align: center">
+        <!--displaying logo-->
+        <img src="/static/img/logo.jpg" alt="logo not loaded" class="center" width="50%" style="padding: 40px"/>
+    </div>
+
+
+    <!--mid/center-->
+    <div class="container">
+        <div class="row">
+                <!--displaying pose-->
+                <!--TODO:
+                - some kind of input form to switch between poses
+                -->
+                <img src="/static/gifs/tree_pose_00.gif" alt="gif not loaded" width="50%"/>
+                <!--displaying live-cam-->
+                <img src="{{ url_for('video_feed') }}" width="50%"/>
+        </div>
+    </div>
+
+    <!--TODO: container(or else) with informational output about the program state such as
+    - camera: on/off
+    - fps display/adjuster: x fps (slider higher lower)
+    - potential settings like: black-white pictures, negatives, other filters, mask of pose, ...
+    - functional output: match value
+    - instruction: i.e. 'left leg incorrectly raised'
+    -->
+
+    <!--TODO: etc.-->
+
+</body>
+</html>
