@@ -4,6 +4,7 @@ import cv2
 import time
 import os
 import db
+import mediapipe as mp
 
 # ---------------------------------------------------------------------
 
@@ -34,12 +35,13 @@ db.init_app(app)
 KEY_Q = ord('q')  # quit
 KEY_ESC = 27  # quit
 
-# states
-global running
-running = True
-
 # create VideoCapture
 vcap = cv2.VideoCapture(0)  # 0=camera
+
+# mediapipe objects
+mp_drawing = mp.solutions.drawing_utils
+mp_drawing_styles = mp.solutions.drawing_styles
+mp_pose = mp.solutions.pose
 
 # check if video capturing has been initialized already
 if not vcap.isOpened():
@@ -60,20 +62,45 @@ else:
 
 
 def gen_frames():  # generate frame by frame from camera
-    global running
+    """ Heart of the image generation/display process. Gets called by http/flask-frontend.
+     """
+    # applying BlazePose
+    with mp_pose.Pose(
+            min_detection_confidence=0.5,
+            min_tracking_confidence=0.5) as pose:
+        while vcap.isOpened():
+            success, image = vcap.read()
+            if not success:
+                print("Ignoring empty camera frame.")
+                # If loading a video, use 'break' instead of 'continue'.
+                break
 
-    while running:
-        success, frame = vcap.read()
-        if success:
-            ret, buffer = cv2.imencode('.jpg', frame)
-            frame = buffer.tobytes()
-            yield b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n'
-        else:
-            break
-        # key = cv2.waitKey(1) & 0xFF  # get key (get only lower 8-bits to work with chars)
-        # if key == KEY_Q or key == KEY_ESC:
-        #     print("EXIT")
-        #     running = False
+            # To improve performance, optionally mark the image as not writeable to
+            # pass by reference.
+            image.flags.writeable = False
+            image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+            results = pose.process(image)
+
+            # Draw the pose annotation on the image.
+            image.flags.writeable = True
+            image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
+            mp_drawing.draw_landmarks(
+                image,
+                results.pose_landmarks,
+                mp_pose.POSE_CONNECTIONS,
+                landmark_drawing_spec=mp_drawing_styles.get_default_pose_landmarks_style())
+
+            # Flip the image horizontally for a selfie-view display. (doesn't work when embedded in flask/webpage)
+            # cv2.flip(image, 1)
+
+            # Create a buffer and return bytestream for webview
+            ret, buffer = cv2.imencode('.jpg', image)
+            image = buffer.tobytes()
+            yield b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + image + b'\r\n'
+
+            # abort with key 27 doesn't work on flask/webpage - should be a route/http-action?
+            if cv2.waitKey(5) & 0xFF == 27:
+                break
 
 
 @app.route('/video_feed')
