@@ -1,8 +1,39 @@
-# TODO an app.py anbinden
 import cv2
 import mediapipe as mp
 import numpy as np
 import os
+
+mp_pose = mp.solutions.pose
+
+used_landmarks = [
+        mp_pose.PoseLandmark.NOSE,
+        mp_pose.PoseLandmark.LEFT_EYE,
+        mp_pose.PoseLandmark.RIGHT_EYE,
+        mp_pose.PoseLandmark.LEFT_EAR,
+        mp_pose.PoseLandmark.RIGHT_EAR,
+        mp_pose.PoseLandmark.LEFT_SHOULDER,
+        mp_pose.PoseLandmark.RIGHT_SHOULDER,
+        mp_pose.PoseLandmark.LEFT_ELBOW,
+        mp_pose.PoseLandmark.RIGHT_ELBOW,
+        mp_pose.PoseLandmark.LEFT_WRIST,
+        mp_pose.PoseLandmark.RIGHT_WRIST,
+        mp_pose.PoseLandmark.LEFT_PINKY,
+        mp_pose.PoseLandmark.RIGHT_PINKY,
+        mp_pose.PoseLandmark.LEFT_INDEX,
+        mp_pose.PoseLandmark.RIGHT_INDEX,
+        mp_pose.PoseLandmark.LEFT_THUMB,
+        mp_pose.PoseLandmark.RIGHT_THUMB,
+        mp_pose.PoseLandmark.LEFT_HIP,
+        mp_pose.PoseLandmark.RIGHT_HIP,
+        mp_pose.PoseLandmark.LEFT_KNEE,
+        mp_pose.PoseLandmark.RIGHT_KNEE,
+        mp_pose.PoseLandmark.LEFT_ANKLE,
+        mp_pose.PoseLandmark.RIGHT_ANKLE,
+        mp_pose.PoseLandmark.LEFT_HEEL,
+        mp_pose.PoseLandmark.RIGHT_HEEL,
+        mp_pose.PoseLandmark.LEFT_FOOT_INDEX,
+        mp_pose.PoseLandmark.RIGHT_FOOT_INDEX,
+]
 
 
 def load_pts(path):
@@ -48,8 +79,8 @@ def save_pts(path, data):
 
 
 def entrypoint():
-    data = ((None, (21,22,23), (31,32,33)), ((11,12,13), (21,22,23), (31,32,33)))
-    #data = load_data("E:/YogAI/data/test/")
+    data = ((None, (21, 22, 23), (31, 32, 33)), ((11, 12, 13), (21, 22, 23), (31, 32, 33)))
+    # data = load_data("E:/YogAI/data/test/")
     path = 'tmp/data.txt'
     save_pts(path, data)
     print(load_pts(path))
@@ -69,44 +100,8 @@ def load_data(directory):
 def generate_pts(path):
     # load img from path, process with blazepose and return list with coordinates of used_landmarks as (x, y, z) tuple
     # if no image or no landmarks are found under path None is returned
-    mp_pose = mp.solutions.pose
-    # the landmarks to be used
-    used_landmarks = [
-        mp_pose.PoseLandmark.NOSE,
-        mp_pose.PoseLandmark.LEFT_EYE,
-        mp_pose.PoseLandmark.RIGHT_EYE,
-        mp_pose.PoseLandmark.LEFT_EAR,
-        mp_pose.PoseLandmark.RIGHT_EAR,
-        mp_pose.PoseLandmark.LEFT_SHOULDER,
-        mp_pose.PoseLandmark.RIGHT_SHOULDER,
-        mp_pose.PoseLandmark.LEFT_ELBOW,
-        mp_pose.PoseLandmark.RIGHT_ELBOW,
-        mp_pose.PoseLandmark.LEFT_WRIST,
-        mp_pose.PoseLandmark.RIGHT_WRIST,
-        mp_pose.PoseLandmark.LEFT_PINKY,
-        mp_pose.PoseLandmark.RIGHT_PINKY,
-        mp_pose.PoseLandmark.LEFT_INDEX,
-        mp_pose.PoseLandmark.RIGHT_INDEX,
-        mp_pose.PoseLandmark.LEFT_THUMB,
-        mp_pose.PoseLandmark.RIGHT_THUMB,
-        mp_pose.PoseLandmark.LEFT_HIP,
-        mp_pose.PoseLandmark.RIGHT_HIP,
-        mp_pose.PoseLandmark.LEFT_KNEE,
-        mp_pose.PoseLandmark.RIGHT_KNEE,
-        mp_pose.PoseLandmark.LEFT_ANKLE,
-        mp_pose.PoseLandmark.RIGHT_ANKLE,
-        mp_pose.PoseLandmark.LEFT_HEEL,
-        mp_pose.PoseLandmark.RIGHT_HEEL,
-        mp_pose.PoseLandmark.LEFT_FOOT_INDEX,
-        mp_pose.PoseLandmark.RIGHT_FOOT_INDEX,
-
-    ]
-    with mp_pose.Pose(
-            static_image_mode=True,
-            model_complexity=2,
-            enable_segmentation=True,
-            min_detection_confidence=0.5) as pose:
-
+    with mp_pose.Pose(static_image_mode=True, model_complexity=2,
+                      enable_segmentation=True, min_detection_confidence=0.5) as pose:
         image = cv2.imread(path)
         if image is None:
             return None
@@ -125,7 +120,5 @@ def generate_pts(path):
                               results.pose_landmarks.landmark[landmark].z))
         return landmarks
 
-
-# functions can be called by app.py or /models/,,,.py directly
 # if __name__ == '__main__':
 #     entrypoint()

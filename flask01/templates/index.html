@@ -9,7 +9,6 @@
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
-    <!--TODO: improve styling with completion of other tasks-->
 
     <!--top/logo-->
     <div class="container" style="text-align: center">
@@ -18,14 +17,28 @@
     </div>
 
 
-    <!--mid/center-->
+    <!--top mid/center-->
+        <div class="container">
+            <div class="row">
+                    <!--increment decrement image_index-->
+                    <form method="post" action="{{ url_for('tasks') }}">
+                        <input type="submit" value="previous" name="prev" />
+                        <input type="submit" value="next" name="nex"/>
+                    </form>
+                    <label></label>
+            </div>
+        </div>
+
+
+    <!--mid mid/center-->
     <div class="container">
         <div class="row">
                 <!--displaying pose-->
                 <!--TODO:
-                - some kind of input form to switch between poses
+                - some kind of input form to switch between poses - DONE
                 -->
-                <img src="/static/gifs/tree_pose_00.gif" alt="gif not loaded" width="50%"/>
+                <!--displaying (static) pose-->
+                <img src="{{ url_for('pose_feed') }}" width="50%">
                 <!--displaying live-cam-->
                 <img src="{{ url_for('video_feed') }}" width="50%"/>
         </div>
@@ -33,11 +46,16 @@
 
     <!--TODO: container(or else) with informational output about the program state such as
     - camera: on/off
-    - fps display/adjuster: x fps (slider higher lower)
+    - fps display/adjuster: x fps (slider higher loer)
     - potential settings like: black-white pictures, negatives, other filters, mask of pose, ...
     - functional output: match value
     - instruction: i.e. 'left leg incorrectly raised'
     -->
+    <div class="container">
+        <div class="row">
+            {{ 'test' + '\n' + 'test2'}}
+        </div>
+    </div>
 
     <!--TODO: etc.-->
 
