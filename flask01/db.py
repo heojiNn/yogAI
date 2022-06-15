@@ -1,3 +1,4 @@
+# TODO: GAMEFY PROJECT
 
 # ref: https://github.com/pallets/flask/tree/main/examples/tutorial and
 # https://flask.palletsprojects.com/en/2.1.x/tutorial/database/

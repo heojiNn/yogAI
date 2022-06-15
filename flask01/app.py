@@ -1,4 +1,6 @@
 # imports
+import pickle
+import random
 from flask import Flask, render_template, Response, request
 import cv2
 import time
@@ -9,6 +11,7 @@ from string import Template
 
 # import local files
 import util as ut
+import warnings
 
 # ---------------------------------------------------------------------
 
@@ -34,14 +37,8 @@ db.init_app(app)
 
 # ---------------------------------------------------------------------
 
-# premature implementation of the webcam-display:
-
-# some state variables:
-global detect_landmarks  # True while landmarks can be extracted (possible user feedback)
-
-# interrupt keys
-KEY_Q = ord('q')  # quit
-KEY_ESC = 27  # quit
+green = (0,204,0)
+red = (0, 0, 255)
 
 # create VideoCapture
 vcap = cv2.VideoCapture(0)  # 0=camera
@@ -54,8 +51,8 @@ mp_pose = mp.solutions.pose
 # string to frontend
 global string
 string = "hallo"
-global image_index
-image_index = 0
+global image_index  # should be changed to a dictionary with strings and models, so the model gets changed too
+image_index = 1
 
 # load all images/poses
 static_img_path = f'./static/img/'
@@ -63,8 +60,12 @@ images = os.listdir(static_img_path)
 images = [x for x in images if x.endswith('.png')]
 length = len(images)
 
-# ---------------------------------------------------------------------
+# load model for downdog
+model = pickle.load(open(f'models/model_downdog_svm.pkl', 'rb'))
+# prevents spamming of UserWarnings while trying to fit model with missing landmarks
+warnings.filterwarnings("ignore", category=UserWarning)
 
+# ---------------------------------------------------------------------
 
 # check if video capturing has been initialized already
 if not vcap.isOpened():
@@ -104,32 +105,36 @@ def gen_frames():
                 # Draw the pose annotation on the image.
                 image.flags.writeable = True
                 image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
-                # Render Pose Detections
-                mp_drawing.draw_landmarks(
-                    image,
-                    results.pose_landmarks,
-                    mp_pose.POSE_CONNECTIONS,
-                    landmark_drawing_spec=mp_drawing_styles.get_default_pose_landmarks_style())
 
-                # possibility to save all landmarks specified in used_landmarks (util.py)
-                # landmarks = []
-                # for landmark in ut.used_landmarks:
-                #     landmarks.append((results.pose_landmarks.landmark[landmark].x,
-                #                       results.pose_landmarks.landmark[landmark].y,
-                #                       results.pose_landmarks.landmark[landmark].z))
-
-                # feedback:
                 if results.pose_landmarks:
-                    string = "landmark"
+                    # Render Pose Detections
+                    mp_drawing.draw_landmarks(
+                        image,
+                        results.pose_landmarks,
+                        mp_pose.POSE_CONNECTIONS,
+                        landmark_drawing_spec=mp_drawing_styles.get_default_pose_landmarks_style()
+                    )
+                    # Extract landmarks from current frame
+                    temp = []
+                    landmarks = results.pose_landmarks.landmark
+                    for i, j in zip(ut.used_landmarks, landmarks):
+                        temp = temp + [j.x, j.y, j.z]
+                    # Make predictions on the extracted landmarks
+                    y = model.predict([temp])
+                    if y == 1:
+                        image = cv2.putText(image, "downdog", (0, 25), cv2.FONT_HERSHEY_SIMPLEX, 1, green, 4)
+                    if y == 0:
+                        image = cv2.putText(image, "not downdog", (0, 25), cv2.FONT_HERSHEY_SIMPLEX, 1, red, 4)
 
-                # Flip the image horizontally for a selfie-view display. (doesn't work when embedded in flask/webpage)
-                # cv2.flip(image, 1)
-                # Create a buffer and return bytestream for webview
-                ret, buffer = cv2.imencode('.jpg', image)
-                image = buffer.tobytes()
-                yield b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + image + b'\r\n'
-                # abort with key 27 doesn't work on flask/webpage - should be a route/http-action?
-                if cv2.waitKey(5) & 0xFF == 27:
+                # image = cv2.flip(image, 1)
+                try:
+                    # Create a buffer and return bytestream for webview
+                    ret, buffer = cv2.imencode('.jpg', image)
+                    image = buffer.tobytes()
+                    yield b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + image + b'\r\n'
+                except Exception as e:
+                    pass
+                if cv2.waitKey(10) & 0xFF == 27:
                     break
 
 
@@ -137,7 +142,7 @@ pcap = cv2.VideoCapture()  # non static poses
 
 
 def gen_pose_frames():
-    """TODO  Displays preprocessed poses"""
+    """TODO  Displays preprocessed poses in gif/video format"""
 
     with mp_pose.Pose(min_detection_confidence=0.75, min_tracking_confidence=0.6) as pose:
         while pcap.isOpened():
