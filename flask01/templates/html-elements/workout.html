@@ -1,0 +1,13 @@
+<form method="POST" action="{{ url_for('pick') }}">
+    <select class="form-select form-select-sm" name="workout">
+        {% for wo in workouts %}
+            {% if wo != active %}
+                    <option value="{{wo}}">{{wo}}</option>"
+            {% else %}
+                    <option value="{{wo}}" SELECTED>{{wo}}</option>"
+            {% endif %}
+        {% endfor %}
+    </select>
+    <input type="submit" name="content" value="Choose"/>
+</form>
+

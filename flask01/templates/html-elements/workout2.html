@@ -1,0 +1,22 @@
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Dropdown button
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        {% for wo in workouts %}
+            {% if wo != active %}
+                    <li>
+                        <form method="POST" action="{{ url_for('pick') }}">
+                            <button name="workout" value="{{wo}}" type="submit" class="btn btn-light">{{wo}}</button>
+                        </form>
+                    </li>
+            {% else %}
+                      <li>
+                        <form method="POST" action="{{ url_for('pick') }}">
+                            <button name="workout" value="{{wo}}" type="submit" class="btn btn-primary">{{wo}}</button>
+                        </form>
+                    </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>

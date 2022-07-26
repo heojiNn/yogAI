@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>3D Viewer</title>
+    <style>
+        body {
+            margin: 0;
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Javascripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    {{ turbo() }}
+</head>
+<body>
+    {% include "html-elements/navbar.html" %}
+    {% include "html-pages/game3d.html" %}
+</body>
+</html>

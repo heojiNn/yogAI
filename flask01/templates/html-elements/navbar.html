@@ -1,0 +1,86 @@
+<style>
+    @media{
+	.navbar .nav-item .dropdown-menu{ display: none; }
+	.navbar .nav-item:hover .nav-link{   }
+	.navbar .nav-item:hover .dropdown-menu{ display: block; }
+	.navbar .nav-item .dropdown-menu{ margin-top:0; }
+}
+</style>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+            <ul class="navbar-nav">
+                <li>
+                    <form method="POST" action="{{ url_for('main_menu', score_page=0) }}">
+                            <button type="submit" class="btn btn-outline-primary"> Menu </button>
+                    </form>
+                </li>
+                &nbsp;&nbsp;
+                <li>
+                    <form method="POST" action="{{ url_for('restart') }}">
+                            <button type="submit" class="btn btn-outline-secondary"> Restart </button>
+                    </form>
+                </li>
+                &nbsp;&nbsp;
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle border border-secondary" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Workout
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                        {% for wo in workouts %}
+                            {% if wo != active %}
+                                    <li>
+                                        <form method="POST" action="{{ url_for('pick') }}">
+                                            <button name="workout" value="{{wo}}" type="submit" class="dropdown-item">{{wo}}</button>
+                                        </form>
+                                    </li>
+                            {% else %}
+                                      <li>
+                                        <form method="POST" action="{{ url_for('pick') }}">
+                                            <button name="workout" value="{{wo}}" type="submit" class="dropdown-item">{{wo}}</button>
+                                        </form>
+                                    </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </li>
+                &nbsp;&nbsp;
+{#                <li class="nav-item dropdown">#}
+{#                    <a class="nav-link dropdown-toggle border border-secondary" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">#}
+{#                        Difficulties#}
+{#                    </a>#}
+{#                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">#}
+{#                        {% for dif in difficulties %}#}
+{#                            <li>#}
+{#                                <form method="POST" action="{{ url_for('pick_difficulty') }}">#}
+{#                                    <button name="workout" value="{{dif}}" type="submit" class="dropdown-item">{{dif}}</button>#}
+{#                                </form>#}
+{#                            </li>#}
+{#                        {% endfor %}#}
+{#                    </ul>#}
+{#                </li>#}
+                &nbsp;&nbsp;
+                {% if loc == 'game3d' %}
+                    <li>
+                        <form method="POST" action="{{ url_for('switch_multiplayer') }}">
+                                <button type="submit" class="btn btn-outline-secondary"> Switch Multiplayer </button>
+                        </form>
+                    </li>
+                {% endif %}
+                &nbsp;&nbsp;
+                <li class="me-auto">
+                    <form method="POST" action="{{ url_for('un_play') }}">
+                        <button type="submit" class="btn btn-outline-primary"> play </button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+

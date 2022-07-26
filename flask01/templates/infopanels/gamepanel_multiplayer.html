@@ -1,0 +1,29 @@
+<div class="load" id="health_mult">
+    <div class="row no-gutters">
+        <div class="col-sm">
+            <svg width="100%" height="30">
+                <g>
+                    <rect width="100%" height="100%" style="fill:rgb(255,0,0);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+    <!--            magic number 5 = svg.width / max health-->
+                    <rect width={{'%s%%' | format(health1)}} height="100%" style="fill:rgb(0,255,0);
+                    stroke-width:3;stroke:rgb(0,0,0);transform: translate({{'%s%%' | format(100-health1)}},0%);"></rect>
+                    <text x="2%" y="67%" font-family="Courier New" font-size="20" font-weight="bold" fill="white">PLAYER 1</text>
+                </g>
+            </svg>
+        </div>
+{#        <div class="col-md-1" width="30">#}
+{#            <img width="30" height="30" src="../../static/img/vs2.jpg">#}
+{#            <text font-family="Courier New" font-size="50" font-weight="bold" fill="red" >VS</text>#}
+{#        </div>#}
+        <div class="col-sm">
+            <svg width="100%" height="30">
+                <g>
+                    <rect width="100%" height="100%" style="fill:rgb(255,0,0);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+        <!--            magic number 5 = svg.width / max health-->
+                    <rect width={{'%s%%' | format(health2)}} height="100%" style="fill:rgb(0,255,0);stroke-width:3;stroke:rgb(0,0,0)"></rect>
+                    <text x="67%" y="67%" font-family="Courier New" font-size="20" font-weight="bold" fill="white">PLAYER 2</text>
+                </g>
+            </svg>
+        </div>
+    </div>
+</div>

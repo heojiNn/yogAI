@@ -1,0 +1,104 @@
+<div id="skel" class="load">
+<style>
+        .__con {
+          width: 500px;
+          position: relative;
+        }
+
+        .__dot {
+          border-radius: 50%;
+          height: 20px;
+          position: absolute;
+          width: 20px;
+        }
+
+        .LEFT_SHOULDER {
+          top: 25%;
+          left: 65%;
+        }
+
+        .RIGHT_SHOULDER {
+          top: 25%;
+          left: 32%;
+        }
+
+        .LEFT_ELBOW {
+          top: 35%;
+          left: 76%;
+        }
+
+        .RIGHT_ELBOW {
+          top: 35%;
+          left: 21%;
+        }
+
+        .LEFT_WRIST {
+          top: 30.5%;
+          left: 87%;
+        }
+
+        .RIGHT_WRIST {
+          top: 30.5%;
+          left: 9%;
+        }
+
+        .LEFT_HIP {
+          top: 51.5%;
+          left: 59.3%;
+        }
+
+        .RIGHT_HIP {
+          top: 51.5%;
+          left: 37.5%;
+        }
+
+        .LEFT_KNEE {
+          top: 69.5%;
+          left: 65%;
+        }
+
+        .RIGHT_KNEE {
+          top: 69.5%;
+          left: 32%;
+        }
+
+        .LEFT_ANKLE {
+          top: 89%;
+          left: 59.5%;
+        }
+
+        .RIGHT_ANKLE {
+          top: 89%;
+          left: 37.3%;
+        }
+
+        .LEFT_HEEL {
+          top: 93.5%;
+          left: 56%;
+        }
+
+        .RIGHT_HEEL {
+          top: 93.5%;
+          left: 41%;
+        }
+
+        img {
+          width: 100%;
+        }
+
+        img {
+        }
+</style>
+<div class="__con">
+    <img src="../../static/img/skeleton.png"/>
+    {% for head_item, item in zipped_data %}
+        {% if item <= best %}
+            <div class="{{head_item}}" style="background-color: #00ff00"></div>
+        {% elif item <= medium %}
+            <div class="{{head_item}}" style="background-color: #ffa500"></div>
+        {% else %}
+            <div class="{{head_item}}" style="background-color: #ff0000"></div>
+        {% endif %}
+    {% endfor %}
+</div>
+</div>

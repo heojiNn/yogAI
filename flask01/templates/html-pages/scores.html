@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Javascripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body style="background-color: #0e0e10;">
+
+    <div class="d-flex align-items-center justify-content-center" style="padding-top: 50px">
+        <form method="POST" action="{{ url_for('main_menu', score_page=1) }}">
+            <button type="submit" class="btn btn-primary">Main Menu</button>
+        </form>
+    </div>
+
+    <div class="d-flex align-items-center justify-content-center" style="padding-top: 20px">
+        <div class="accordion" id="accordionExample">
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button collapsed btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Singleplayer
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+
+                        <div class="input-group mb-3">
+                            <form action="{{ url_for('user_add', mode='singleplayer') }}" method="POST">
+                                Add
+                                <input name="add" type="text" value="Username" />
+                                <input type="submit" value="Submit" />
+                            </form>
+                            &nbsp;&nbsp;&nbsp;
+                            <form action="{{ url_for('user_delete') }}" method="POST">
+                                Delete
+                                <input name="del" type="text" value="id" />
+                                <input type="submit" value="Submit" />
+                            </form>
+                            &nbsp;&nbsp;&nbsp;
+                            <form action="{{ url_for('set_active', mode='singleplayer') }}" method="POST">
+                                Set Active:
+                                <input name="set" type="text" value="id" />
+                                <input type="submit" value="Submit" />
+                            </form>
+                        </div>
+
+                        <table class="table table-dark table-striped" style="border-collapse: collapse;margin-left:auto;margin-right:auto;">
+                            <tr>
+                                <th>User-Id</th>
+                                <th>User-Name</th>
+                                <th>Workout-Name</th>
+                                <th>User-Highscore</th>
+                                <th>Active</th>
+                            </tr>
+                            {% for user in Users %}
+                                {% if user[2] == 'singleplayer' %}
+                                    {% for uw in UserWorkouts %}
+                                        {% if user[0] == uw[0] %}
+                                            <tr>
+                                                <th>{{ user[0] }}</th>
+                                                <th>{{ user[1] }}</th>
+                                                <th>{{ uw[1] }}</th>
+                                                <th>{{ uw[2] }} </th>
+                                                <th>{{ user[3] }}</th>
+                                            </tr>
+                                        {% endif %}
+                                    {% endfor %}
+                                    <tr>
+                                        <th>{{ user[0] }}</th>
+                                        <th>{{ user[1] }}</th>
+                                        <th> - </th>
+                                        <th> - </th>
+                                        <th>{{ user[3] }}</th>
+                                    </tr>
+                                {% endif %}
+                            {% endfor %}
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Multiplayer
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div class="accordion-body" >
+
+                        <div class="input-group mb-3">
+                            <form action="{{ url_for('user_add', mode='multiplayer') }}" method="POST">
+                                Add
+                                <input name="add" type="text" value="Username" />
+                                <input type="submit" value="Submit" />
+                            </form>
+                            &nbsp;&nbsp;&nbsp;
+                            <form action="{{ url_for('user_delete') }}" method="POST">
+                                Delete
+                                <input name="del" type="text" value="id" />
+                                <input type="submit" value="Submit" />
+                            </form>
+                            &nbsp;&nbsp;&nbsp;
+                            <form action="{{ url_for('set_active', mode='multiplayer') }}" method="POST">
+                                Set Active:
+                                <input name="set" type="text" value="id1,id2" />
+                                <input type="submit" value="Submit" />
+                            </form>
+                        </div>
+
+                        <table class="table table-dark table-striped" >
+                            <tr>
+                                <th>User-Id</th>
+                                <th>User-Name</th>
+                                <th>Workout-Name</th>
+                                <th>User-Highscore</th>
+                                <th>Active</th>
+                            </tr>
+                            {% for user in Users %}
+                                {% if user[2] == 'multiplayer' %}
+                                    {% for uw in UserWorkouts %}
+                                        {% if user[0] == uw[0] %}
+                                            <tr>
+                                                <th>{{ user[0] }}</th>
+                                                <th>{{ user[1] }}</th>
+                                                <th>{{ uw[1] }}</th>
+                                                <th>{{ uw[2] }} </th>
+                                                <th>{{ user[3] }}</th>
+                                            </tr>
+                                        {% endif %}
+                                    {% endfor %}
+                                    <tr>
+                                        <th>{{ user[0] }}</th>
+                                        <th>{{ user[1] }}</th>
+                                        <th> - </th>
+                                        <th> - </th>
+                                        <th>{{ user[3] }}</th>
+                                    </tr>
+                                {% endif %}
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

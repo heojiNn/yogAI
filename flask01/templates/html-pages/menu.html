@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Javascripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body style="background-color: #0e0e10;">
+    <script>
+        //auto-triggering js function
+        //to refresh once after first load
+        //because 'turbo()' on game_page prevents push-requests on the non turbo-page(here)
+        (function()
+        {
+            if( window.localStorage )
+            {
+                //check if reloaded once already
+                if( !localStorage.getItem('firstLoad') )
+                {
+                    //if not reloaded once, then set firstload to true
+                    localStorage['firstLoad'] = true;
+                    //reload the webpage using reload() method
+                    window.location.reload();
+                }
+                else
+                    localStorage.removeItem('firstLoad');
+            }
+        })();
+    </script>
+
+    <div class="col d-flex align-items-center justify-content-center" style="padding-top: 200px">
+        <div class="card " style="width: 20%; text-align: center; padding: 20px; margin: 0 auto">
+            <img src="static/img/logo.jpg" class="card-img-top" alt="...">
+            <div class="card-header">
+                Featured:
+            </div>
+            <ul class="list-group list-group-flush">
+                {#Singleplayer#}
+                <li class="list-group-item">
+                    <form method="POST" action="{{ url_for('singleplayer') }}">
+                        <input type="submit" name="content" value="Singleplayer"/>
+                    </form>
+                </li>
+                {#Multiplayer#}
+                <li class="list-group-item">
+                    <form method="POST" action="{{ url_for('multiplayer') }}">
+                        <input type="submit" name="content" value="Multiplayer"/>
+                    </form>
+                </li>
+                {#3D-Viewer#}
+                <li class="list-group-item">
+                    <form method="POST" action="{{ url_for('game3d') }}">
+                        <input type="submit" name="content" value="3D Viewer"/>
+                    </form>
+                </li>
+                {#Scores#}
+                <li class="list-group-item">
+                    <form method="POST" action="{{ url_for('scores') }}">
+                        <input type="submit" name="content" value="Scores&Profiles"/>
+                    </form>
+                </li>
+            </ul>
+            <div class="card-body">
+                <a href="https://www.uni-augsburg.de/de/fakultaet/fai/informatik/prof/hcm/" class="card-link">About</a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
+

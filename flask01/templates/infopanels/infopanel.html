@@ -1,0 +1,43 @@
+<div id="data" class="load">
+    <table style="border-collapse: collapse;margin-left:auto;margin-right:auto;">
+        <!--    <tr><th></th><th>1 min</th><th>5 min</th><th>15 min</th></tr>-->
+        <!--    <tr><th>Load averages:</th><td>{{ load1 }}</td><td>{{ load5 }}</td><td>{{ load15 }}</td></tr>-->
+        <tr>
+            <th>|</th>
+            {% for head_item in head%}
+            <th>{{head_item}}</th>
+            <th>|</th>
+            {% endfor %}
+        </tr>
+        <tr style="border-bottom:1px solid black">
+            <td colspan="100%"></td>
+        </tr>
+        {% for type in data %}
+            <tr>
+                <th>|</th>
+                {% for item in type %}
+                    <th>{{'%0.3f' | format(item|float)}}</th>
+                    <th>|</th>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        <tr>
+            {% if static %}
+            {% for items in data %}
+            {% for item in items %}
+                {% if item <= best %}
+                <th style="text-align: center"><span class="dot" style="background-color: #00ff00"></span></th>
+                <th>|</th>
+                {% elif item <= medium %}
+                <th style="text-align: center"><span class="dot" style="background-color: #ffa500"></span></th>
+                <th>|</th>
+                {% else %}
+                <th style="text-align: center"><span class="dot" style="background-color: #ff0000"></span></th>
+                <th>|</th>
+                {% endif %}
+            {% endfor %}
+            {% endfor %}
+            {% endif %}
+        </tr>
+    </table>
+</div>

@@ -12,3 +12,6 @@ build/
 .idea/
 *.swp
 *~
+evaluation/files/
+evaluation/gifs/
+scores.sqlite3

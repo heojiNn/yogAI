@@ -1,0 +1,874 @@
+<div>
+    <div class="load" id="databuffer">
+        <!-- Player 1 Data Loading -->
+        <input type="hidden" id="left_shoulder_p1" value="{{ left_shoulder_pts_p1 | safe }}">
+        <input type="hidden" id="left_elbow_p1" value="{{ left_elbow_pts_p1 | safe }}">
+        <input type="hidden" id="left_wrist_p1" value="{{ left_wrist_pts_p1 | safe }}">
+        <input type="hidden" id="left_hip_p1" value="{{ left_hip_pts_p1 | safe }}">
+        <input type="hidden" id="left_knee_p1" value="{{ left_knee_pts_p1 | safe }}">
+        <input type="hidden" id="left_ankle_p1" value="{{ left_ankle_pts_p1 | safe }}">
+        <input type="hidden" id="right_shoulder_p1" value="{{ right_shoulder_pts_p1 | safe }}">
+        <input type="hidden" id="right_elbow_p1" value="{{ right_elbow_pts_p1 | safe }}">
+        <input type="hidden" id="right_wrist_p1" value="{{ right_wrist_pts_p1 | safe }}">
+        <input type="hidden" id="right_hip_p1" value="{{ right_hip_pts_p1 | safe }}">
+        <input type="hidden" id="right_knee_p1" value="{{ right_knee_pts_p1 | safe }}">
+        <input type="hidden" id="right_ankle_p1" value="{{ right_ankle_pts_p1 | safe }}">
+        <!-- Player 1 Landmark Distances Loading -->
+        <input type="hidden" id="left_shoulder_p1_dist" value="{{ left_shoulder_dist_p1 | safe }}">
+        <input type="hidden" id="left_elbow_p1_dist" value="{{ left_elbow_dist_p1 | safe }}">
+        <input type="hidden" id="left_wrist_p1_dist" value="{{ left_wrist_dist_p1 | safe }}">
+        <input type="hidden" id="left_hip_p1_dist" value="{{ left_hip_dist_p1 | safe }}">
+        <input type="hidden" id="left_knee_p1_dist" value="{{ left_knee_dist_p1 | safe }}">
+        <input type="hidden" id="left_ankle_p1_dist" value="{{ left_ankle_dist_p1 | safe }}">
+        <input type="hidden" id="right_shoulder_p1_dist" value="{{ right_shoulder_dist_p1 | safe }}">
+        <input type="hidden" id="right_elbow_p1_dist" value="{{ right_elbow_dist_p1 | safe }}">
+        <input type="hidden" id="right_wrist_p1_dist" value="{{ right_wrist_dist_p1 | safe }}">
+        <input type="hidden" id="right_hip_p1_dist" value="{{ right_hip_dist_p1 | safe }}">
+        <input type="hidden" id="right_knee_p1_dist" value="{{ right_knee_dist_p1 | safe }}">
+        <input type="hidden" id="right_ankle_p1_dist" value="{{ right_ankle_dist_p1 | safe }}">
+        <!-- Player 2 Data Loading -->
+        <input type="hidden" id="left_shoulder_p2" value="{{ left_shoulder_pts_p2 | safe }}">
+        <input type="hidden" id="left_elbow_p2" value="{{ left_elbow_pts_p2 | safe }}">
+        <input type="hidden" id="left_wrist_p2" value="{{ left_wrist_pts_p2 | safe }}">
+        <input type="hidden" id="left_hip_p2" value="{{ left_hip_pts_p2 | safe }}">
+        <input type="hidden" id="left_knee_p2" value="{{ left_knee_pts_p2 | safe }}">
+        <input type="hidden" id="left_ankle_p2" value="{{ left_ankle_pts_p2 | safe }}">
+        <input type="hidden" id="right_shoulder_p2" value="{{ right_shoulder_pts_p2 | safe }}">
+        <input type="hidden" id="right_elbow_p2" value="{{ right_elbow_pts_p2 | safe }}">
+        <input type="hidden" id="right_wrist_p2" value="{{ right_wrist_pts_p2 | safe }}">
+        <input type="hidden" id="right_hip_p2" value="{{ right_hip_pts_p2 | safe }}">
+        <input type="hidden" id="right_knee_p2" value="{{ right_knee_pts_p2 | safe }}">
+        <input type="hidden" id="right_ankle_p2" value="{{ right_ankle_pts_p2 | safe }}">
+        <!-- Player 2 Landmark Distances Loading -->
+        <input type="hidden" id="left_shoulder_p2_dist" value="{{ left_shoulder_dist_p2 | safe }}">
+        <input type="hidden" id="left_elbow_p2_dist" value="{{ left_elbow_dist_p2 | safe }}">
+        <input type="hidden" id="left_wrist_p2_dist" value="{{ left_wrist_dist_p2 | safe }}">
+        <input type="hidden" id="left_hip_p2_dist" value="{{ left_hip_dist_p2 | safe }}">
+        <input type="hidden" id="left_knee_p2_dist" value="{{ left_knee_dist_p2 | safe }}">
+        <input type="hidden" id="left_ankle_p2_dist" value="{{ left_ankle_dist_p2 | safe }}">
+        <input type="hidden" id="right_shoulder_p2_dist" value="{{ right_shoulder_dist_p2 | safe }}">
+        <input type="hidden" id="right_elbow_p2_dist" value="{{ right_elbow_dist_p2 | safe }}">
+        <input type="hidden" id="right_wrist_p2_dist" value="{{ right_wrist_dist_p2 | safe }}">
+        <input type="hidden" id="right_hip_p2_dist" value="{{ right_hip_dist_p2 | safe }}">
+        <input type="hidden" id="right_knee_p2_dist" value="{{ right_knee_dist_p2 | safe }}">
+        <input type="hidden" id="right_ankle_p2_dist" value="{{ right_ankle_dist_p2 | safe }}">
+        <!-- Trainer Data Loading -->
+        <input type="hidden" id="left_shoulder_trainer" value="{{ left_shoulder_pts_trainer | safe }}">
+        <input type="hidden" id="left_elbow_trainer" value="{{ left_elbow_pts_trainer | safe }}">
+        <input type="hidden" id="left_wrist_trainer" value="{{ left_wrist_pts_trainer | safe }}">
+        <input type="hidden" id="left_hip_trainer" value="{{ left_hip_pts_trainer | safe }}">
+        <input type="hidden" id="left_knee_trainer" value="{{ left_knee_pts_trainer | safe }}">
+        <input type="hidden" id="left_ankle_trainer" value="{{ left_ankle_pts_trainer | safe }}">
+        <input type="hidden" id="right_shoulder_trainer" value="{{ right_shoulder_pts_trainer | safe }}">
+        <input type="hidden" id="right_elbow_trainer" value="{{ right_elbow_pts_trainer | safe }}">
+        <input type="hidden" id="right_wrist_trainer" value="{{ right_wrist_pts_trainer | safe }}">
+        <input type="hidden" id="right_hip_trainer" value="{{ right_hip_pts_trainer | safe }}">
+        <input type="hidden" id="right_knee_trainer" value="{{ right_knee_pts_trainer | safe }}">
+        <input type="hidden" id="right_ankle_trainer" value="{{ right_ankle_pts_trainer | safe }}">
+        <!-- Misc Data Loading-->
+        <input type="hidden" id="combo_p1" value="{{ combo1 | safe }}">
+        <input type="hidden" id="combo_p2" value="{{ combo2 | safe }}">
+        <input type="hidden" id="posename" value="{{ PoseName | safe }}">
+        <input type="hidden" id="player1_score" value="{{ score1 | safe }}">
+        <input type="hidden" id="player2_score" value="{{ score2 | safe }}">
+        <input type="hidden" id="health_p1" value="{{ health1 | safe }}">
+        <input type="hidden" id="health_p2" value="{{ health2 | safe }}">
+        <input type="hidden" id="player1_name" value="{{ name_player1 | safe }}">
+        <input type="hidden" id="player2_name" value="{{ name_player2 | safe }}">
+        <input type="hidden" id="multiplayer_load" value="{{ multiplayer | safe }}">
+        <input type="hidden" id="mapname" value="{{ map_name | safe }}">
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.125.2/build/three.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.125.2/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.125.2/examples/js/loaders/OBJLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.125.2/examples/js/controls/OrbitControls.js"></script>
+    <script type="module">
+        import ThreeMeshUI from 'https://cdn.skypack.dev/three-mesh-ui';
+        var camera, scene, renderer, clock, vecc, sca;
+        var left_arm, left_elbow, left_wrist, left_hip, left_knee, left_ankle;
+        var right_arm, right_elbow, right_wrist, right_hip, right_knee, right_ankle;
+
+        var left_arm_elbow_vec, left_elbow_wrist_vec, left_knee_hip_vec, left_ankle_knee_vec;
+        var right_arm_elbow_vec, right_elbow_wrist_vec, right_knee_hip_vec, right_ankle_knee_vec;
+        var arm_hip_vec;
+
+        var leftForeArm, leftArm, leftHand, leftLeg, leftShin, leftFoot;
+        var rightForeArm, rightArm, rightHand, rightLeg, rightShin, rightFoot;
+
+        var left_arm_dist, left_elbow_dist, left_wrist_dist, left_hip_dist, left_knee_dist, left_ankle_dist;
+        var right_arm_dist, right_elbow_dist, right_wrist_dist, right_hip_dist, right_knee_dist, right_ankle_dist;
+
+        var person1_particleSystem = [];
+        var person2_particleSystem = [];
+
+        var debugvec, debuglength;
+        var items = [];
+
+        var player1 = {};
+        var player2 = {};
+        var trainer = {};
+        var multiplayer = document.querySelector("#multiplayer_load").value;
+        var health_p1, health_p2;
+        var lifebar_p1, lifebar_p2;
+
+        var lifematerial = new THREE.MeshBasicMaterial({color: 0x00ff00});
+        var deathmaterial = new THREE.MeshBasicMaterial({color: 0xff0000});
+        var geometry = new THREE.CylinderGeometry(0.1, 0.1, 1, 64);
+        var lifebar_p1 = new THREE.Mesh(geometry, lifematerial);
+        var lifebar_p2 = new THREE.Mesh(geometry, lifematerial);
+
+        var myfont;
+        var p1_score = "0";
+        var p2_score = "0";
+        var p1_combo = "0";
+        var p2_combo = "0";
+        var PoseMesh;
+
+        var p1_score_container, p2_score_container;
+        var p1_combo_container, p2_combo_container;
+        var pose_container;
+        var posename;
+        var poseMeshUI, p1_scoreMeshUI, p2_scoreMeshUI, p1_comboMeshUI, p2_comboMeshUI;
+
+        var counter = 0;
+
+
+        //var particleAmount = 100; // has to be dividable by 10
+
+        init();
+        animate();
+
+        function load_distances(person){
+            
+            left_arm_dist = myload('#left_shoulder'+'_'+person+"_dist");
+            left_elbow_dist = myload('#left_elbow'+'_'+person+"_dist");
+            left_wrist_dist = myload('#left_wrist'+'_'+person+"_dist");
+            
+            left_hip_dist = myload('#left_hip'+'_'+person+"_dist");
+            left_knee_dist = myload('#left_knee'+'_'+person+"_dist");
+            left_ankle_dist = myload('#left_ankle'+'_'+person+"_dist");
+            
+            right_arm_dist = myload('#right_shoulder'+'_'+person+"_dist");
+            right_elbow_dist = myload('#right_elbow'+'_'+person+"_dist");
+            right_wrist_dist = myload('#right_wrist'+'_'+person+"_dist");
+            
+            right_hip_dist = myload('#right_hip'+'_'+person+"_dist");
+            right_knee_dist = myload('#right_knee'+'_'+person+"_dist");
+            right_ankle_dist = myload('#right_ankle'+'_'+person+"_dist");
+        }
+
+        function feedback(name, person){
+            // Function all about giving players particle Feedback
+            load_distances(name);
+            
+            
+            
+        }
+
+        function load_newData(person){
+            //  Loads new data from buffer 
+            //console.log("RELOAD:"+person);
+            left_arm = myload('#left_shoulder'+'_'+person);
+            left_elbow = myload('#left_elbow'+'_'+person);
+            left_wrist = myload('#left_wrist'+'_'+person);
+            
+            left_hip = myload('#left_hip'+'_'+person);
+            left_knee = myload('#left_knee'+'_'+person);
+            left_ankle = myload('#left_ankle'+'_'+person);
+            
+            right_arm = myload('#right_shoulder'+'_'+person);
+            right_elbow = myload('#right_elbow'+'_'+person);
+            right_wrist = myload('#right_wrist'+'_'+person);
+            
+            right_hip = myload('#right_hip'+'_'+person);
+            right_knee = myload('#right_knee'+'_'+person);
+            right_ankle = myload('#right_ankle'+'_'+person);
+        }
+
+        function calc_quaternion(vec1, vec2){
+            /*
+                returns quaternion to rotate from vec1 to vec2
+            */
+
+            var v1 = new THREE.Vector3();
+            var v2 = new THREE.Vector3();
+            v1.copy(vec1);
+            v2.copy(vec2);
+
+            v1.normalize();
+            v2.normalize();
+
+            var quat = new THREE.Quaternion();
+            quat.setFromUnitVectors(v1, v2).normalize();
+
+            return quat;
+        }
+
+        function update_rotations(name, person_bones){
+            if (typeof person_bones ==="undefined"){
+                console.warn("from_vec is undefined");
+                return;
+            }
+            if (typeof name ==="undefined"){
+                console.warn("from_vec is undefined");
+                return;
+            }
+            load_newData(name);
+            calc_data_vecs();
+            {
+                set_rotations(person_bones.leftForeArm.position, left_arm_elbow_vec, person_bones.leftArm);
+                set_rotations(person_bones.leftHand.position, left_elbow_wrist_vec, person_bones.leftForeArm);
+                set_rotations(person_bones.rightForeArm.position, right_arm_elbow_vec, person_bones.rightArm);
+                set_rotations(person_bones.rightHand.position, right_elbow_wrist_vec, person_bones.rightForeArm);
+
+                set_rotations(person_bones.leftShin.position, left_knee_hip_vec, person_bones.leftLeg);
+                set_rotations(person_bones.leftFoot.position, left_ankle_knee_vec, person_bones.leftShin);
+                set_rotations(person_bones.rightShin.position, right_knee_hip_vec, person_bones.rightLeg);
+                set_rotations(person_bones.rightFoot.position, right_ankle_knee_vec, person_bones.rightShin);
+
+                set_rotations(person_bones.spine2.position, arm_hip_vec, person_bones.hips);
+            }
+        }
+
+
+        function set_rotations(from_vec, target_vec, obj){
+            /*
+                from_vec like elbow.position | target_vec like left_arm_elbow_vec
+
+                -- sets rotation of obj like inp_vec
+            */
+            if (typeof from_vec ==="undefined"){
+                console.warn("from_vec is undefined");
+                return;
+            }
+            if (typeof target_vec ==="undefined"){
+                console.warn("target_vec is undefined");
+                return;
+            }
+            if (typeof obj === "undefined"){
+                console.warn("obj is undefined");
+                return;
+            }
+            var parent = obj.parent;
+            scene.attach(obj);
+
+            var parentWorldQuat = new THREE.Quaternion();
+            parentWorldQuat = obj.parent.getWorldQuaternion(new THREE.Quaternion());
+            var ObjWorldQuat = obj.getWorldQuaternion(new THREE.Quaternion());
+
+            var quat = calc_quaternion(from_vec, target_vec);
+
+            obj.quaternion.rotateTowards(quat, 2* Math.PI);
+
+            parent.attach(obj);
+
+
+        }
+
+       
+
+        function calc_data_vecs(){
+            {
+                //left
+
+                var armvec = new THREE.Vector3().fromArray(left_arm);
+                var elbowvec = new THREE.Vector3().fromArray(left_elbow);
+
+                left_arm_elbow_vec = new THREE.Vector3().subVectors(elbowvec, armvec);
+                left_arm_elbow_vec = new THREE.Vector3(left_arm_elbow_vec.x,-left_arm_elbow_vec.y, -left_arm_elbow_vec.z);
+
+                var elbowvec = new THREE.Vector3().fromArray(left_elbow);
+                var wristvec = new THREE.Vector3().fromArray(left_wrist);
+
+                left_elbow_wrist_vec = new THREE.Vector3().subVectors(wristvec, elbowvec);
+                left_elbow_wrist_vec = new THREE.Vector3(left_elbow_wrist_vec.x,-left_elbow_wrist_vec.y, -left_elbow_wrist_vec.z);
+                
+                var hipvec = new THREE.Vector3().fromArray(left_hip);
+                var kneevec = new THREE.Vector3().fromArray(left_knee);
+
+                left_knee_hip_vec = new THREE.Vector3().subVectors(kneevec, hipvec);
+                left_knee_hip_vec = new THREE.Vector3(left_knee_hip_vec.x,-left_knee_hip_vec.y, -left_knee_hip_vec.z);
+
+                var anklevec = new THREE.Vector3().fromArray(left_ankle);
+                var kneevec = new THREE.Vector3().fromArray(left_knee);
+
+                left_ankle_knee_vec = new THREE.Vector3().subVectors(anklevec, kneevec);
+                left_ankle_knee_vec = new THREE.Vector3(left_ankle_knee_vec.x,-left_ankle_knee_vec.y, -left_ankle_knee_vec.z);
+            }
+            {
+                //right
+                
+                var armvec = new THREE.Vector3().fromArray(right_arm);
+                var elbowvec = new THREE.Vector3().fromArray(right_elbow);
+
+                right_arm_elbow_vec = new THREE.Vector3().subVectors(elbowvec, armvec);
+                right_arm_elbow_vec = new THREE.Vector3(right_arm_elbow_vec.x,-right_arm_elbow_vec.y, -right_arm_elbow_vec.z);
+
+                var elbowvec = new THREE.Vector3().fromArray(right_elbow);
+                var wristvec = new THREE.Vector3().fromArray(right_wrist);
+
+                right_elbow_wrist_vec = new THREE.Vector3().subVectors(wristvec, elbowvec);
+                right_elbow_wrist_vec = new THREE.Vector3(right_elbow_wrist_vec.x,-right_elbow_wrist_vec.y, -right_elbow_wrist_vec.z);
+                
+                var hipvec = new THREE.Vector3().fromArray(right_hip);
+                var kneevec = new THREE.Vector3().fromArray(right_knee);
+
+                right_knee_hip_vec = new THREE.Vector3().subVectors(kneevec, hipvec);
+                right_knee_hip_vec = new THREE.Vector3(right_knee_hip_vec.x,-right_knee_hip_vec.y, -right_knee_hip_vec.z);
+
+                var anklevec = new THREE.Vector3().fromArray(right_ankle);
+                var kneevec = new THREE.Vector3().fromArray(right_knee);
+
+                right_ankle_knee_vec = new THREE.Vector3().subVectors(anklevec, kneevec);
+                right_ankle_knee_vec = new THREE.Vector3(right_ankle_knee_vec.x,-right_ankle_knee_vec.y, -right_ankle_knee_vec.z);
+            }      
+
+            {
+                // Spine, but exact spine will be ignored. Only Hip rotation relevant bc BlazePose doesn't return spinepoints
+
+                var l_armvec = new THREE.Vector3().fromArray(left_arm);
+                var l_hipvec = new THREE.Vector3().fromArray(left_hip);
+
+                var r_armvec = new THREE.Vector3().fromArray(right_arm);
+                var r_hipvec = new THREE.Vector3().fromArray(right_hip);
+
+                var spinevec = new THREE.Vector3().addVectors(l_armvec, r_armvec).divideScalar(2);
+                var hipvec = new THREE.Vector3().addVectors(l_hipvec, r_hipvec).divideScalar(2);
+
+                arm_hip_vec = new THREE.Vector3().subVectors(hipvec, spinevec);
+            }
+        }
+
+
+        function myload(buf_id){
+            var dataAsString = document.querySelector(buf_id).value;
+            var dataAsString = dataAsString.slice(1, dataAsString.length-1);
+            var data_conv = dataAsString.split(",");
+            var data_conv = data_conv.map(Number);
+            return data_conv;
+        }
+
+        
+
+        function init() {
+            console.warn("INIT");
+            camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 10);
+            scene = new THREE.Scene();
+
+            const Fontloader = new THREE.FontLoader();
+            // Player 1 name
+            var name_p1 = document.querySelector("#player1_name").value;
+            Fontloader.load('static/fonts/Old_School_Regular.json', function(font){
+                myfont = font;
+                const geometry = new THREE.TextGeometry(name_p1, {
+                    font: font,
+                    size: 0.2,
+                    height: 0.01,
+                })
+
+                const textMesh = new THREE.Mesh(geometry, [
+                    new THREE.MeshPhongMaterial({color: 0x000000}), // Front color
+                    new THREE.MeshPhongMaterial({color: 0x555555}) // side color
+                ])
+                textMesh.castShadow = true;
+                textMesh.position.set(-0.5,1.7,0);
+                scene.add(textMesh);
+            })
+
+            // Player 1 Score Mesh
+            p1_score_container = new ThreeMeshUI.Block({
+                width: 1,
+                height: 0.2,
+                padding: 0.05,
+                justifyContent: 'center',
+		        alignContent: 'left',
+		        fontFamily: 'https://unpkg.com/three-mesh-ui/examples/assets/Roboto-msdf.json',
+		        fontTexture: 'https://unpkg.com/three-mesh-ui/examples/assets/Roboto-msdf.png'
+            })
+            p1_score_container.position.set(0,2,0);
+            scene.add(p1_score_container);
+            p1_scoreMeshUI = new ThreeMeshUI.Text({
+                            content: "Score: "+p1_score,
+                            fontSize: 0.1
+                        });
+            p1_score_container.add(
+                p1_scoreMeshUI
+            );
+            /*
+            Fontloader.load('static/fonts/Old_School_Regular.json', function(font){
+                const geometry = new THREE.TextGeometry('SCORE: 0', {
+                    font: font,
+                    size: 0.2,
+                    height: 0.01,
+                })
+
+                const textMesh = new THREE.Mesh(geometry, [
+                    new THREE.MeshPhongMaterial({color: 0x000000}), // Front color
+                    new THREE.MeshPhongMaterial({color: 0x000000}) // side color
+                ])
+                textMesh.castShadow = true;
+                textMesh.position.set(-1,2,0);
+                textMesh.name='Player1_scoreMesh';
+                p1_scoreMesh = textMesh;
+                scene.add(textMesh);
+            })*/
+
+            // Player 1 Combo Mesh
+
+            p1_combo_container = new ThreeMeshUI.Block({
+                width: 1,
+                height: 0.2,
+                padding: 0.05,
+                justifyContent: 'center',
+		        alignContent: 'left',
+		        fontFamily: 'https://unpkg.com/three-mesh-ui/examples/assets/Roboto-msdf.json',
+		        fontTexture: 'https://unpkg.com/three-mesh-ui/examples/assets/Roboto-msdf.png'
+            })
+            p1_combo_container.position.set(0,-1,0);
+            scene.add(p1_combo_container);
+            
+            p1_comboMeshUI = new ThreeMeshUI.Text({
+                                content: "Combo: "+p1_combo,
+                                fontSize: 0.1
+                            });
+            p1_combo_container.add(
+                p1_comboMeshUI
+            );
+            
+
+            
+
+            
+
+            
+            pose_container
+            // POSE MESH AMK!!!
+
+            pose_container = new ThreeMeshUI.Block({
+                width: 1,
+                height: 0.2,
+                padding: 0.05,
+                justifyContent: 'center',
+		        alignContent: 'left',
+		        fontFamily: 'https://unpkg.com/three-mesh-ui/examples/assets/Roboto-msdf.json',
+		        fontTexture: 'https://unpkg.com/three-mesh-ui/examples/assets/Roboto-msdf.png'
+            })
+            pose_container.position.set(2.5,-1,0);
+            scene.add(pose_container);
+            poseMeshUI = new ThreeMeshUI.Text({
+                        content: "Pose: "+posename,
+                        fontSize: 0.1
+                        });
+            pose_container.add(
+                poseMeshUI
+            );
+            console.warn(pose_container);
+
+            // Trainer Name
+            Fontloader.load('static/fonts/Old_School_Regular.json', function(font){
+                const geometry = new THREE.TextGeometry('GIGAYOGI', {
+                    font: font,
+                    size: 0.2,
+                    height: 0.01,
+                })
+
+                const textMesh = new THREE.Mesh(geometry, [
+                    new THREE.MeshPhongMaterial({color: 0x000000}), // Front color
+                    new THREE.MeshPhongMaterial({color: 0x000000}) // side color
+                ])
+                textMesh.castShadow = true;
+                textMesh.position.set(2,1.7,0);
+                textMesh.name='TestMesh';
+                scene.add(textMesh);
+            })
+
+            
+            // Player 1 Lifebar
+            //const geometry = new THREE.CylinderGeometry(0.1, 0.1, 1, 64);
+            //const lifematerial = new THREE.MeshBasicMaterial({color: 0x00ff00});
+            
+            //var lifebar_p1 = new THREE.Mesh(geometry, lifematerial);
+            var deathbar_p1 = new THREE.Mesh(geometry, deathmaterial);
+            lifebar_p1.position.set(0, 1.4, 0);
+            lifebar_p1.renderOrder = 1;
+            deathbar_p1.position.set(0,1.4,0);
+            const lifegroup_p1 = new THREE.Group();
+            lifegroup_p1.add(lifebar_p1)
+            lifegroup_p1.add(deathbar_p1)
+
+            scene.add(lifegroup_p1);
+
+            //scene.add(lifebar_p1);
+            //scene.add(deathbar_p1);
+            lifebar_p1.rotateZ(Math.PI/2);
+            deathbar_p1.rotateZ(Math.PI/2);
+
+
+            if(multiplayer ==="True"){
+                // Camera
+                camera.position.set(2.8, 0.5, 4.6);
+                // Player 2 Lifebar
+                //var lifebar_p2 = new THREE.Mesh(geometry, lifematerial);
+                var deathbar_p2 = new THREE.Mesh(geometry, deathmaterial);
+                lifebar_p2.position.set(5, 1.4, 0);
+                lifebar_p2.renderOrder = 1;
+                deathbar_p2.position.set(5,1.4,0);
+                const lifegroup_p2 = new THREE.Group();
+                lifegroup_p2.add(lifebar_p2)
+                lifegroup_p2.add(deathbar_p2)
+
+                scene.add(lifegroup_p2);
+                lifebar_p2.rotateZ(Math.PI/2);
+                deathbar_p2.rotateZ(Math.PI/2);
+                // Player 2 Name
+                var name_p2 = document.querySelector("#player2_name").value;
+                Fontloader.load('static/fonts/Old_School_Regular.json', function(font){
+                    const geometry = new THREE.TextGeometry(name_p2, {
+                        font: font,
+                        size: 0.2,
+                        height: 0.01,
+                    })
+
+                    const textMesh = new THREE.Mesh(geometry, [
+                        new THREE.MeshPhongMaterial({color: 0x000000}), // Front color
+                        new THREE.MeshPhongMaterial({color: 0x555555}) // side color
+                    ])
+                    textMesh.castShadow = true;
+                    textMesh.position.set(4.5,1.7,0);
+                    scene.add(textMesh);
+                })
+
+                // Player 2 Score 
+                p2_score_container = new ThreeMeshUI.Block({
+                    width: 1,
+                    height: 0.2,
+                    padding: 0.05,
+                    justifyContent: 'center',
+                    alignContent: 'left',
+                    fontFamily: 'https://unpkg.com/three-mesh-ui/examples/assets/Roboto-msdf.json',
+                    fontTexture: 'https://unpkg.com/three-mesh-ui/examples/assets/Roboto-msdf.png'
+                })
+                p2_score_container.position.set(5,2,0);
+                scene.add(p2_score_container);
+                
+                p2_scoreMeshUI = new ThreeMeshUI.Text({
+                        content: "Score: "+p2_score,
+                        fontSize: 0.1
+                        });
+                p2_score_container.add(
+                    p2_scoreMeshUI
+                );
+
+                // Player 2 Combo
+
+                p2_combo_container = new ThreeMeshUI.Block({
+                    width: 1,
+                    height: 0.2,
+                    padding: 0.05,
+                    justifyContent: 'center',
+                    alignContent: 'left',
+                    fontFamily: 'https://unpkg.com/three-mesh-ui/examples/assets/Roboto-msdf.json',
+                    fontTexture: 'https://unpkg.com/three-mesh-ui/examples/assets/Roboto-msdf.png'
+                })
+                p2_combo_container.position.set(5,-1,0);
+                scene.add(p2_combo_container);
+                
+                p2_comboMeshUI = new ThreeMeshUI.Text({
+                        content: "Combo: "+p2_combo,
+                        fontSize: 0.1
+                        });
+                p2_combo_container.add(
+                    p2_comboMeshUI
+                );
+
+            }else {
+                camera.position.set(1.3, 0.5, 5);
+            }
+            
+
+            clock = new THREE.Clock();
+
+            
+            
+            
+            var leftLight = generateSpotlight('rgb(255,200,200)', 0.5);
+            var rightLight = generateSpotlight('rgb(255,200,200)', 1.2);
+            leftLight.position.set(6,8,10);
+            rightLight.position.set(30,20,-10);
+
+            var map = document.querySelector("#mapname").value
+            var filenames = ['px', 'nx', 'py', 'ny', 'pz', 'nz'];
+            var reflectionCube = new THREE.CubeTextureLoader().load(filenames.map(
+                function(filename){
+                    return 'static/maps/' + map + '/' + filename + ".jpg";
+                }
+            ));
+            reflectionCube.rotate
+            scene.background = reflectionCube;
+            
+            scene.add(leftLight);
+            scene.add(rightLight);
+
+            /*
+            var particleMat = new THREE.PointsMaterial({
+                color: 'rgb(150, 30, 0)',
+                size: 0.1,
+                map: new THREE.TextureLoader().load('static/particles/fire.png'),
+                transparent: true,
+                blending: THREE.AdditiveBlending,
+                depthWrite: false
+            });
+            
+
+            
+            var particleAmount = 500;
+            var arr=[];
+            for(var i = 0; i < particleAmount; i++){
+                var particle = new THREE.Vector3(Math.random()*5-2.5, Math.random()*5-2.5, Math.random()*5-2.5);
+                //particleSystem.vertices.push(particle);
+                arr.push(particle);
+            }
+            particleSystem.setFromPoints(arr);
+            var particles = new THREE.Points(particleSystem, particleMat);
+            particles.name = 'particles';
+            scene.add(particles);
+            */
+
+            /*var grid = new THREE.GridHelper(30, 30, 0x444444, 0x888888);
+            var grid2 = new THREE.GridHelper(30, 30, 0x444444, 0x888888);
+            var grid3 = new THREE.GridHelper(30, 30, 0x444444, 0x888888);
+            grid2.rotateX(Math.PI / 2);
+            grid3.rotateZ(Math.PI / 2);
+            //grid3.rotateY(Math.PI / 2);
+            scene.add(grid);
+            scene.add(grid2);
+            scene.add(grid3);*/
+            // model
+            const loader = new THREE.GLTFLoader();
+            // Load Player1
+            loader.load('https://threejs.org/examples/models/gltf/Soldier.glb', function (gltf) {
+
+                const model = gltf.scene;
+
+                model.traverse(function (obj) {
+                    if (obj.type === "Bone") {
+                        //console.log(obj);
+                        obj.castShadow = true;
+                    }
+                })
+
+                player1.hips = model.getObjectByName("mixamorigHips");
+                player1.spine2 = model.getObjectByName("mixamorigSpine2");
+                player1.rightArm = model.getObjectByName('mixamorigRightArm');
+                player1.leftArm = model.getObjectByName('mixamorigLeftArm');
+                player1.leftForeArm = model.getObjectByName('mixamorigLeftForeArm');
+                player1.rightHand = model.getObjectByName('mixamorigRightHand');
+                player1.leftHand = model.getObjectByName('mixamorigLeftHand');
+                player1.rightForeArm = model.getObjectByName('mixamorigRightForeArm');
+
+                player1.leftLeg = model.getObjectByName('mixamorigLeftUpLeg');
+                player1.leftShin = model.getObjectByName('mixamorigLeftLeg');
+                player1.leftFoot = model.getObjectByName('mixamorigLeftFoot');
+                player1.rightLeg = model.getObjectByName('mixamorigRightUpLeg');
+                player1.rightShin = model.getObjectByName('mixamorigRightLeg');
+                player1.rightFoot = model.getObjectByName('mixamorigRightFoot');
+
+                player1.score = "0";
+
+                model.position.set(0, -1, 0);
+                scene.add(model);
+            });
+            
+                loader.load('https://threejs.org/examples/models/gltf/Soldier.glb', function (gltf) {
+
+                const model = gltf.scene;
+
+                model.traverse(function (obj) {
+                    if (obj.type === "Bone") {
+                        console.log(obj);
+                        obj.castShadow = true;
+                    }
+                })
+                
+                trainer.hips = model.getObjectByName("mixamorigHips");
+                trainer.spine2 = model.getObjectByName("mixamorigSpine2");
+                trainer.rightArm = model.getObjectByName('mixamorigRightArm');
+                trainer.leftArm = model.getObjectByName('mixamorigLeftArm');
+                trainer.leftForeArm = model.getObjectByName('mixamorigLeftForeArm');
+                trainer.rightHand = model.getObjectByName('mixamorigRightHand');
+                trainer.leftHand = model.getObjectByName('mixamorigLeftHand');
+                trainer.rightForeArm = model.getObjectByName('mixamorigRightForeArm');
+
+                trainer.leftLeg = model.getObjectByName('mixamorigLeftUpLeg');
+                trainer.leftShin = model.getObjectByName('mixamorigLeftLeg');
+                trainer.leftFoot = model.getObjectByName('mixamorigLeftFoot');
+                trainer.rightLeg = model.getObjectByName('mixamorigRightUpLeg');
+                trainer.rightShin = model.getObjectByName('mixamorigRightLeg');
+                trainer.rightFoot = model.getObjectByName('mixamorigRightFoot');
+                
+                model.position.set(2.5, -1, 0);
+                scene.add(model);
+
+                });
+            
+                if(multiplayer ==="True"){
+                loader.load('https://threejs.org/examples/models/gltf/Soldier.glb', function (gltf) {
+
+                    const model = gltf.scene;
+
+                    model.traverse(function (obj) {
+                        if (obj.type === "Bone") {
+                            //console.log(obj);
+                            obj.castShadow = true;
+                        }
+                    })
+
+                    player2.hips = model.getObjectByName("mixamorigHips");
+                    player2.spine2 = model.getObjectByName("mixamorigSpine2");
+                    player2.rightArm = model.getObjectByName('mixamorigRightArm');
+                    player2.leftArm = model.getObjectByName('mixamorigLeftArm');
+                    player2.leftForeArm = model.getObjectByName('mixamorigLeftForeArm');
+                    player2.rightHand = model.getObjectByName('mixamorigRightHand');
+                    player2.leftHand = model.getObjectByName('mixamorigLeftHand');
+                    player2.rightForeArm = model.getObjectByName('mixamorigRightForeArm');
+
+                    player2.leftLeg = model.getObjectByName('mixamorigLeftUpLeg');
+                    player2.leftShin = model.getObjectByName('mixamorigLeftLeg');
+                    player2.leftFoot = model.getObjectByName('mixamorigLeftFoot');
+                    player2.rightLeg = model.getObjectByName('mixamorigRightUpLeg');
+                    player2.rightShin = model.getObjectByName('mixamorigRightLeg');
+                    player2.rightFoot = model.getObjectByName('mixamorigRightFoot');
+
+                    player2.score = "0";
+
+                    model.position.set(5, -1, 0);
+                    scene.add(model);
+
+                });
+            }
+
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.shadowMap.enabled = true;
+            renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.outputEncoding = THREE.sRGBEncoding;
+            document.body.appendChild(renderer.domElement);
+
+            window.addEventListener('resize', onWindowResize, false);
+
+            const controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+            if(multiplayer ==="True"){
+                controls.target.set(2.8, 0.5, 0);
+            }else {
+                controls.target.set(1.3, 0.5, 0);
+            }
+            
+            controls.update();
+        }
+
+        function generateSpotlight(color, intensity){
+            var light = new THREE.SpotLight(color, intensity);
+            light.castShadow = true;
+            light.penumbra = 0.5;
+            light.shadow.mapSize.width = 2048;
+            light.shadow.mapSize.height = 2048;
+            light.shadow.bias = 0.001;
+            return light;
+        }
+
+        function onWindowResize() {
+
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+
+            renderer.setSize(window.innerWidth, window.innerHeight);
+
+        }
+
+        function animate() {
+            
+
+            requestAnimationFrame( animate );
+
+        
+            //requestAnimationFrame(animate);
+
+            const t = clock.getElapsedTime();
+            multiplayer = document.querySelector("#multiplayer_load").value
+            
+            update_rotations('p1', player1);
+            // update health Player1
+            
+            var health_p1 = Number(document.querySelector("#health_p1").value);
+            lifebar_p1.scale.set(1,health_p1/100,1);
+            lifebar_p1.position.set(-(1-health_p1/100)/2, 1.4, 0);
+
+            update_rotations('trainer', trainer);
+
+            if(multiplayer ==="True"){
+                update_rotations('p2', player2);
+                // update health Player2 
+                var health_p2 = Number(document.querySelector("#health_p2").value);
+                lifebar_p2.scale.set(1,health_p2/100,1);
+                lifebar_p2.position.set(5-(1-health_p2/100)/2, 1.4, 0);
+            }
+            
+            //var p1_score_container, p2_score_container;
+            //var p1_combo_container, p2_combo_container;
+            //var pose_container;
+            
+            // Update Score Meshes
+            // for Player 1...
+            p1_score = document.querySelector("#player1_score").value;
+            p1_scoreMeshUI.set({ content: "Score: "+p1_score });
+            //p1_score_container.childrenTexts[0].content = "Score: "+p1_score;
+            /*p1_scoreMesh.geometry = new THREE.TextGeometry('SCORE: '+ score, {
+                    font: myfont,
+                    size: 0.2,
+                    height: 0.01,
+                })*/
+
+            // POSE MESH SHIT HOLE
+            posename = document.querySelector("#posename").value;
+            poseMeshUI.set({ content: "Pose: "+posename });// = "Pose: "+posename;
+            //console.warn("POSENAME");
+            //console.warn(posename);
+            //console.warn(typeof posename);
+            //pose_container.children[1].content = "Pose: "+posename;
+            
+            // Combo Mesh Update Player 1
+            var p1_combo = document.querySelector("#combo_p1").value
+            p1_comboMeshUI.set({ content: "Combo: "+p1_combo });
+            
+            if(multiplayer ==="True"){
+                // Combo Mesh Update Player 2
+                var p2_combo = document.querySelector("#combo_p2").value
+                p2_comboMeshUI.set({ content: "Combo: "+p2_combo });
+                // for Player 2...
+                var p2_score = document.querySelector("#player2_score").value
+                p2_scoreMeshUI.set({ content: "Score: "+p2_score });
+            }
+            
+            
+            /*
+            var particles = scene.getObjectByName('particles');
+            const position = particles.geometry.attributes.position;
+            for (let i = 0; i < position.count * 3; i++){
+                particles.position.x -= (Math.random()-0.5) * 1e-6;
+                particles.position.y += Math.random() * 1e-6;
+                particles.position.z += (Math.random()-0.5) * 1e-6;
+
+                if (particles.position.x < -10) particles.position.x = 10
+                if (particles.position.y > 5) particles.position.y = -5
+                if (particles.position.z > 10) particles.position.z = -10
+            }
+            particles.geometry.verticesNeedUpdate = true;
+            */
+            ThreeMeshUI.update();
+            renderer.render(scene, camera);
+
+        }
+    </script>
+    </div>
+</div>
